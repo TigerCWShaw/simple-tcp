@@ -1,8 +1,9 @@
 import socket, sys, os
 import struct
 import time
+import threading
 
-def rtt(sample_rtt):
+def get_timeout_interval(sample_rtt):
     estimated_rtt = estimated_rtt * 0.875 + sample_rtt * 0.125
     dev_rtt = 0.75 * sample_rtt + 0.25 * abs(sample_rtt - estimated_rtt)
     time_out_interval = estimated_rtt + 4 * dev_rtt
@@ -22,6 +23,7 @@ class Sender(object):
         self.ack_port = ack_port
         self.timeout = 0.5
         self.resend_dict = {}
+        self.conn = False
 
         self.udp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         # self.udp_sock.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
@@ -31,9 +33,15 @@ class Sender(object):
         self.ack_sock.bind(('127.0.0.1', self.ack_port))
 
         self.file_size = os.path.getsize(file_name)
-        self.total_pack = self.file_size // self.MAX_SEG_SIZ
+        # total packet include syn and fin hanshake(each 2 packets)
+        self.total_pack = self.file_size // self.MAX_SEG_SIZ + 4
         if self.file_size % self.MAX_SEG_SIZ > 0:
             self.total_pack += 1
+
+        send_thread = threading.Thread(target=self.send, args=())
+        send_thread.start()
+        recv_thread = threading.Thread(target=self.recieve, args=())
+        recv_thread.start()
 
     def get_checksum(header, data):
         checksum = 0
@@ -72,8 +80,9 @@ class Sender(object):
 
     def send_packet(self, msg):
         self.udp_sock.sendto(msg, (self.dest_addr, self.dest_port))
-        # seq_num: (timeout_time, msg)
-        self.resend_dict[self.seq_num] = (time.time() + self.timeout, msg)
+        # seq_num: (timeout_time, msg, have_resend)
+        # have_resend is to make sure sampleRTT calculated correctly
+        self.resend_dict[self.seq_num] = (time.perf_counter() + self.timeout, msg, False)
         self.seq_num += 1
 
     def send(self):
@@ -82,13 +91,10 @@ class Sender(object):
         msg = self.get_packet(0, 1, fin, '')
         self.send_packet(msg)
 
-        # header = self.get_header(ack=0, syn=1, fin=fin, checksum=0)
-        # checksum = self.get_checksum(header)
-        # header = self.get_header(ack=0, syn=1, fin=fin, checksum=checksum)
-        # self.udp_sock.sendto(msg, (self.dest_addr, self.dest_port))
-        # self.resend_dict[self.seq_num] = (time.time() + self.timeout, header)
-        # self.seq_num += 1
-
+        while True:
+            # waiting for reciever's response
+            if self.conn:
+                break
 
         with open(self.file_name, 'r') as f:
         # while self.seq_num < self.total_pack:
@@ -102,14 +108,6 @@ class Sender(object):
                 msg = self.get_packet(0, 0, fin, data)
                 self.send_packet(msg)
 
-                # header = self.get_header(ack=0, syn=0, fin=fin, checksum=0)
-                # checksum = self.get_checksum(header + data.encode())
-                # header = self.get_header(ack=0, syn=0, fin=fin, checksum=checksum)
-                # msg = header + data.encode()
-                # self.udp_sock.sendto(msg, (self.dest_addr, self.dest_port))
-                # self.resend_dict[self.seq_num] = (time.time() + self.timeout, msg)
-
-                self.seq_num += 1
 
 
     def recieve(self):
@@ -128,10 +126,19 @@ class Sender(object):
             syn = flags[4]
             fin = flags[5]
 
+
+            # remove msg from resend_dict
+            value = self.resend_dict.pop(seq)
+            if value[2] == False:
+                # update time_out interval
+                sample_rtt = time.perf_counter() - value[0]
+                self.timeout = get_timeout_interval(sample_rtt)
+
             if syn == 1 and ack == 1:
                 # send an ack msg and stablish connection
                 msg = self.get_packet(1, 0, 0, '')
                 self.send_packet(msg)
+                self.conn = True
             elif ack == 1 and fin ==1:
                 self.ack_num += 1
                 msg = self.get_packet(1, 0, 0, '')
@@ -140,23 +147,32 @@ class Sender(object):
                 break
             elif ack == 1:
                 self.ack_num += 1
-                # remove msg from resend_dict
-                self.resend_dict.pop(seq)
             else:
                 print('unknown msg recieved')
 
     def resend(self):
-        pass
+        while True:
+            # seq_num: (timeout_time, msg, have_resend)
+            for seq_num, value in self.resend_dict.items():
+                # timeout -> retransmission
+                if time.perf_counter() >= value[0]:
+                    self.udp_sock.sendto(value[1], (self.dest_addr, self.dest_port))
+                    self.resend_dict[seq_num][0] = time.perf_counter() + self.timeout
 
 
 
 def main():
     if len(sys.argv) != 6:
-        print('Usage: python client.py <file_name> <udp_addr> <udp_port> <windowsize> <ack_port>')
+        print('Usage: python sender.py <file_name> <udp_addr> <udp_port> <windowsize> <ack_port>')
+        sys.exit()
     file_name = sys.argv[1]
     dest_addr = sys.argv[2]
     dest_port = int(sys.argv[3])
     win_size = int(sys.argv[4])
     ack_port = int(sys.argv[5])
+    s = Sender(file_name, dest_addr, dest_port, win_size, ack_port)
+
+if __name__ == "__main__":
+    main()
 
 
