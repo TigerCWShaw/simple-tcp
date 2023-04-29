@@ -156,6 +156,7 @@ class Sender(object):
             for seq_num, value in self.resend_dict.items():
                 # timeout -> retransmission
                 if time.perf_counter() >= value[0]:
+                    print('Resending packet ', seq_num, '...')
                     self.udp_sock.sendto(value[1], (self.dest_addr, self.dest_port))
                     self.resend_dict[seq_num][0] = time.perf_counter() + self.timeout
 
