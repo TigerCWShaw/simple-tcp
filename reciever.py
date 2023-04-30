@@ -76,6 +76,7 @@ class Reciever(object):
                 msg = self.set_flags(header_val, '1', syn, fin)
                 self.udp_sock.sendto(msg, (self.ack_addr, self.ack_port))
                 self.save_file()
+                break
             elif ack == '1':
                 if not fin:
                     print('TCP connection established with ' + str(addr))
