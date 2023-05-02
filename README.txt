@@ -32,7 +32,9 @@ Structure of the program:
     Sender will send an ack message after recieving the syn-ack message, establishing the TCP connection. (sender.py line 173)
 
 2. Data transmission and reception
-    After establshing connection with the reciever, sender will send the file in multiple packets each <= maximum segment size. (sender.py line 133) I set the max segment size to 16 byte for more convenient testing.
+    After establshing connection with the reciever, sender will send the file1 in multiple packets each <= maximum segment size. (sender.py line 133) I set the max segment size to 16 byte for more convenient testing.
+    
+    The reciever will save the packets in a dictionary, when it recieves the fin request, it will combine the packets to file2.txt
 
     Each time we send a message we will add this message to a dictionary along with the current time, its sequence number and a flag to indicates if the message have been retransmitted to make sure timeout is calculated correctly. (sender.py line 113)
 
