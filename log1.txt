@@ -1,0 +1,308 @@
+23:30:57,589 root ERROR Timeout for packet_0
+23:30:57,595 root ERROR Retransmitting packet_0
+23:30:57,795 root ERROR Timeout for packet_3
+23:30:57,795 root ERROR Retransmitting packet_3
+23:30:57,813 root ERROR Timeout for packet_6
+23:30:57,813 root ERROR Retransmitting packet_6
+23:30:57,825 root ERROR Timeout for packet_8
+23:30:57,826 root ERROR Retransmitting packet_8
+23:30:57,830 root ERROR Timeout for packet_9
+23:30:57,830 root ERROR Retransmitting packet_9
+23:30:57,843 root ERROR Timeout for packet_11
+23:30:57,843 root ERROR Retransmitting packet_11
+23:30:57,860 root ERROR Timeout for packet_13
+23:30:57,861 root ERROR Retransmitting packet_13
+23:30:57,867 root ERROR Timeout for packet_14
+23:30:57,868 root ERROR Retransmitting packet_14
+23:30:57,877 root ERROR Timeout for packet_15
+23:30:57,877 root ERROR Retransmitting packet_15
+23:30:57,948 root ERROR Timeout for packet_6
+23:30:57,948 root ERROR Retransmitting packet_6
+23:30:57,960 root ERROR Timeout for packet_8
+23:30:57,960 root ERROR Retransmitting packet_8
+23:30:57,978 root ERROR Timeout for packet_11
+23:30:57,978 root ERROR Retransmitting packet_11
+23:30:57,995 root ERROR Timeout for packet_13
+23:30:57,995 root ERROR Retransmitting packet_13
+23:30:58,12 root ERROR Timeout for packet_15
+23:30:58,12 root ERROR Retransmitting packet_15
+23:30:58,95 root ERROR Timeout for packet_8
+23:30:58,96 root ERROR Retransmitting packet_8
+23:30:58,112 root ERROR Timeout for packet_11
+23:30:58,113 root ERROR Retransmitting packet_11
+23:30:58,130 root ERROR Timeout for packet_13
+23:30:58,131 root ERROR Retransmitting packet_13
+23:30:58,147 root ERROR Timeout for packet_15
+23:30:58,147 root ERROR Retransmitting packet_15
+23:30:58,247 root ERROR Timeout for packet_11
+23:30:58,247 root ERROR Retransmitting packet_11
+23:30:58,265 root ERROR Timeout for packet_13
+23:30:58,266 root ERROR Retransmitting packet_13
+23:30:58,282 root ERROR Timeout for packet_15
+23:30:58,282 root ERROR Retransmitting packet_15
+23:30:58,400 root ERROR Timeout for packet_13
+23:30:58,400 root ERROR Retransmitting packet_13
+23:30:58,416 root ERROR Timeout for packet_15
+23:30:58,417 root ERROR Retransmitting packet_15
+23:33:05,968 root ERROR Timeout for packet_0
+23:33:05,974 root ERROR Retransmitting packet_0
+23:33:05,990 root ERROR Timeout for packet_0
+23:33:05,996 root ERROR Retransmitting packet_0
+23:33:06,2 root ERROR Timeout for packet_1
+23:33:06,3 root ERROR Retransmitting packet_1
+23:33:06,3 root ERROR Timeout for packet_1
+23:33:06,3 root ERROR Retransmitting packet_1
+23:33:06,3 root ERROR Timeout for packet_2
+23:33:06,3 root ERROR Retransmitting packet_2
+23:33:06,9 root ERROR Recieved duplicated ack for packet_1
+23:33:06,153 root ERROR Timeout for packet_3
+23:33:06,153 root ERROR Retransmitting packet_3
+23:33:06,153 root ERROR Timeout for packet_4
+23:33:06,154 root ERROR Retransmitting packet_4
+23:33:06,160 root ERROR Timeout for packet_9
+23:33:06,160 root ERROR Retransmitting packet_9
+23:33:06,172 root ERROR Timeout for packet_11
+23:33:06,173 root ERROR Retransmitting packet_11
+23:33:06,200 root ERROR Timeout for packet_14
+23:33:06,200 root ERROR Retransmitting packet_14
+23:33:06,206 root ERROR Timeout for packet_15
+23:33:06,207 root ERROR Retransmitting packet_15
+23:33:06,304 root ERROR Timeout for packet_4
+23:33:06,304 root ERROR Retransmitting packet_4
+23:33:06,310 root ERROR Timeout for packet_9
+23:33:06,310 root ERROR Retransmitting packet_9
+23:33:06,323 root ERROR Timeout for packet_11
+23:33:06,323 root ERROR Retransmitting packet_11
+23:33:06,454 root ERROR Timeout for packet_4
+23:33:06,454 root ERROR Retransmitting packet_4
+23:33:06,605 root ERROR Timeout for packet_4
+23:33:06,605 root ERROR Retransmitting packet_4
+23:33:06,761 root ERROR Timeout for packet_16
+23:33:06,761 root ERROR Retransmitting packet_16
+23:33:06,911 root ERROR Timeout for packet_16
+23:33:06,912 root ERROR Retransmitting packet_16
+23:33:23,424 root ERROR Timeout for packet_0
+23:33:23,429 root ERROR Retransmitting packet_0
+23:33:23,441 root ERROR Recieved duplicated ack for packet_0
+23:33:23,598 root ERROR Timeout for packet_1
+23:33:23,600 root ERROR Retransmitting packet_1
+23:33:23,606 root ERROR Timeout for packet_3
+23:33:23,606 root ERROR Retransmitting packet_3
+23:33:23,618 root ERROR Timeout for packet_5
+23:33:23,619 root ERROR Retransmitting packet_5
+23:33:23,627 root ERROR Timeout for packet_6
+23:33:23,628 root ERROR Retransmitting packet_6
+23:33:23,630 root ERROR Timeout for packet_7
+23:33:23,632 root ERROR Retransmitting packet_7
+23:33:23,635 root ERROR Timeout for packet_8
+23:33:23,636 root ERROR Retransmitting packet_8
+23:33:23,641 root ERROR Timeout for packet_9
+23:33:23,641 root ERROR Retransmitting packet_9
+23:33:23,648 root ERROR Timeout for packet_11
+23:33:23,648 root ERROR Retransmitting packet_11
+23:33:23,653 root ERROR Timeout for packet_12
+23:33:23,654 root ERROR Retransmitting packet_12
+23:33:23,664 root ERROR Timeout for packet_13
+23:33:23,664 root ERROR Retransmitting packet_13
+23:33:23,670 root ERROR Timeout for packet_14
+23:33:23,670 root ERROR Retransmitting packet_14
+23:33:23,750 root ERROR Timeout for packet_1
+23:33:23,751 root ERROR Retransmitting packet_1
+23:33:23,780 root ERROR Timeout for packet_6
+23:33:23,780 root ERROR Retransmitting packet_6
+23:33:23,794 root ERROR Timeout for packet_9
+23:33:23,794 root ERROR Retransmitting packet_9
+23:33:23,801 root ERROR Timeout for packet_11
+23:33:23,802 root ERROR Retransmitting packet_11
+23:33:23,806 root ERROR Timeout for packet_12
+23:33:23,807 root ERROR Retransmitting packet_12
+23:33:23,819 root ERROR Timeout for packet_13
+23:33:23,820 root ERROR Retransmitting packet_13
+23:33:23,823 root ERROR Timeout for packet_14
+23:33:23,823 root ERROR Retransmitting packet_14
+23:33:23,903 root ERROR Timeout for packet_1
+23:33:23,904 root ERROR Retransmitting packet_1
+23:33:23,947 root ERROR Timeout for packet_9
+23:33:23,948 root ERROR Retransmitting packet_9
+23:33:23,976 root ERROR Timeout for packet_14
+23:33:23,976 root ERROR Retransmitting packet_14
+23:33:24,56 root ERROR Timeout for packet_1
+23:33:24,57 root ERROR Retransmitting packet_1
+23:33:24,100 root ERROR Timeout for packet_9
+23:33:24,101 root ERROR Retransmitting packet_9
+23:33:24,271 root ERROR Timeout for packet_16
+23:33:24,271 root ERROR Retransmitting packet_16
+23:33:24,424 root ERROR Timeout for packet_16
+23:33:24,424 root ERROR Retransmitting packet_16
+23:35:40,953 root ERROR Timeout for packet_4
+23:35:40,954 root ERROR Retransmitting packet_4
+23:35:40,959 root ERROR Timeout for packet_5
+23:35:40,960 root ERROR Retransmitting packet_5
+23:35:40,994 root ERROR Timeout for packet_8
+23:35:40,994 root ERROR Retransmitting packet_8
+23:35:41,7 root ERROR Timeout for packet_10
+23:35:41,7 root ERROR Retransmitting packet_10
+23:35:41,17 root ERROR Timeout for packet_11
+23:35:41,18 root ERROR Retransmitting packet_11
+23:35:41,23 root ERROR Timeout for packet_12
+23:35:41,23 root ERROR Retransmitting packet_12
+23:35:41,34 root ERROR Timeout for packet_14
+23:35:41,35 root ERROR Retransmitting packet_14
+23:35:41,41 root ERROR Timeout for packet_15
+23:35:41,41 root ERROR Retransmitting packet_15
+23:35:41,89 root ERROR Timeout for packet_5
+23:35:41,90 root ERROR Retransmitting packet_5
+23:35:41,136 root ERROR Timeout for packet_10
+23:35:41,137 root ERROR Retransmitting packet_10
+23:35:41,147 root ERROR Timeout for packet_11
+23:35:41,148 root ERROR Retransmitting packet_11
+23:35:41,152 root ERROR Timeout for packet_12
+23:35:41,152 root ERROR Retransmitting packet_12
+23:35:41,171 root ERROR Timeout for packet_15
+23:35:41,171 root ERROR Retransmitting packet_15
+23:35:41,266 root ERROR Timeout for packet_10
+23:35:41,266 root ERROR Retransmitting packet_10
+23:35:41,276 root ERROR Timeout for packet_11
+23:35:41,277 root ERROR Retransmitting packet_11
+23:35:41,300 root ERROR Timeout for packet_15
+23:35:41,302 root ERROR Retransmitting packet_15
+23:35:41,457 root ERROR Timeout for packet_16
+23:35:41,457 root ERROR Retransmitting packet_16
+23:35:41,586 root ERROR Timeout for packet_16
+23:35:41,587 root ERROR Retransmitting packet_16
+23:44:58,921 root ERROR Timeout for packet_0
+23:44:58,926 root ERROR Retransmitting packet_0
+23:44:59,422 root ERROR Timeout for packet_0
+23:44:59,428 root ERROR Retransmitting packet_0
+23:44:59,922 root ERROR Timeout for packet_0
+23:44:59,927 root ERROR Retransmitting packet_0
+23:45:00,427 root ERROR Timeout for packet_0
+23:45:00,433 root ERROR Retransmitting packet_0
+23:45:00,927 root ERROR Timeout for packet_0
+23:45:00,933 root ERROR Retransmitting packet_0
+23:45:01,427 root ERROR Timeout for packet_0
+23:45:01,433 root ERROR Retransmitting packet_0
+23:45:01,932 root ERROR Timeout for packet_0
+23:45:01,938 root ERROR Retransmitting packet_0
+23:45:02,437 root ERROR Timeout for packet_0
+23:45:02,442 root ERROR Retransmitting packet_0
+23:45:02,941 root ERROR Timeout for packet_0
+23:45:02,947 root ERROR Retransmitting packet_0
+23:45:03,446 root ERROR Timeout for packet_0
+23:45:03,451 root ERROR Retransmitting packet_0
+23:45:03,950 root ERROR Timeout for packet_0
+23:45:03,955 root ERROR Retransmitting packet_0
+23:45:04,450 root ERROR Timeout for packet_0
+23:45:04,455 root ERROR Retransmitting packet_0
+23:45:04,950 root ERROR Timeout for packet_0
+23:45:04,955 root ERROR Retransmitting packet_0
+23:45:05,450 root ERROR Timeout for packet_0
+23:45:05,456 root ERROR Retransmitting packet_0
+23:45:05,951 root ERROR Timeout for packet_0
+23:45:05,956 root ERROR Retransmitting packet_0
+23:45:06,452 root ERROR Timeout for packet_0
+23:45:06,458 root ERROR Retransmitting packet_0
+23:45:06,954 root ERROR Timeout for packet_0
+23:45:06,960 root ERROR Retransmitting packet_0
+23:45:07,454 root ERROR Timeout for packet_0
+23:45:07,460 root ERROR Retransmitting packet_0
+23:45:07,955 root ERROR Timeout for packet_0
+23:45:07,961 root ERROR Retransmitting packet_0
+23:45:08,454 root ERROR Timeout for packet_0
+23:45:08,460 root ERROR Retransmitting packet_0
+23:45:08,954 root ERROR Timeout for packet_0
+23:45:08,962 root ERROR Retransmitting packet_0
+23:45:28,280 root ERROR Timeout for packet_0
+23:45:28,285 root ERROR Retransmitting packet_0
+23:45:28,784 root ERROR Timeout for packet_0
+23:45:28,790 root ERROR Retransmitting packet_0
+23:45:28,923 root ERROR Timeout for packet_1
+23:45:28,924 root ERROR Retransmitting packet_1
+23:45:28,925 root ERROR Timeout for packet_2
+23:45:28,925 root ERROR Retransmitting packet_2
+23:45:28,926 root ERROR Timeout for packet_5
+23:45:28,926 root ERROR Retransmitting packet_5
+23:45:28,927 root ERROR Timeout for packet_6
+23:45:28,927 root ERROR Retransmitting packet_6
+23:45:28,927 root ERROR Timeout for packet_7
+23:45:28,927 root ERROR Retransmitting packet_7
+23:45:28,929 root ERROR Timeout for packet_11
+23:45:28,930 root ERROR Retransmitting packet_11
+23:45:29,26 root ERROR Timeout for packet_5
+23:45:29,26 root ERROR Retransmitting packet_5
+23:45:29,30 root ERROR Timeout for packet_11
+23:45:29,30 root ERROR Retransmitting packet_11
+23:45:29,126 root ERROR Timeout for packet_5
+23:45:29,127 root ERROR Retransmitting packet_5
+23:45:29,227 root ERROR Timeout for packet_5
+23:45:29,227 root ERROR Retransmitting packet_5
+00:30:37,823 root ERROR Timeout for packet_6
+00:30:37,823 root ERROR Retransmitting packet_6
+00:30:37,828 root ERROR Timeout for packet_7
+00:30:37,829 root ERROR Retransmitting packet_7
+00:30:37,852 root ERROR Timeout for packet_10
+00:30:37,852 root ERROR Retransmitting packet_10
+00:30:37,859 root ERROR Timeout for packet_13
+00:30:37,859 root ERROR Retransmitting packet_13
+00:30:37,864 root ERROR Timeout for packet_14
+00:30:37,864 root ERROR Retransmitting packet_14
+00:30:37,961 root ERROR Timeout for packet_6
+00:30:37,962 root ERROR Retransmitting packet_6
+00:30:37,966 root ERROR Timeout for packet_7
+00:30:37,967 root ERROR Retransmitting packet_7
+00:30:37,990 root ERROR Timeout for packet_10
+00:30:37,990 root ERROR Retransmitting packet_10
+00:30:38,2 root ERROR Timeout for packet_14
+00:30:38,3 root ERROR Retransmitting packet_14
+00:30:38,99 root ERROR Timeout for packet_6
+00:30:38,99 root ERROR Retransmitting packet_6
+00:30:38,104 root ERROR Timeout for packet_7
+00:30:38,104 root ERROR Retransmitting packet_7
+00:30:38,242 root ERROR Timeout for packet_7
+00:30:38,242 root ERROR Retransmitting packet_7
+00:30:38,380 root ERROR Timeout for packet_7
+00:30:38,380 root ERROR Retransmitting packet_7
+00:51:52,613 root ERROR Timeout for packet_0
+00:51:52,618 root ERROR Retransmitting packet_0
+00:51:53,115 root ERROR Timeout for packet_0
+00:51:53,120 root ERROR Retransmitting packet_0
+00:51:53,296 root ERROR Timeout for packet_1
+00:51:53,296 root ERROR Retransmitting packet_1
+00:51:53,301 root ERROR Timeout for packet_2
+00:51:53,302 root ERROR Retransmitting packet_2
+00:51:53,307 root ERROR Timeout for packet_3
+00:51:53,307 root ERROR Retransmitting packet_3
+00:51:53,318 root ERROR Timeout for packet_5
+00:51:53,319 root ERROR Retransmitting packet_5
+00:51:53,319 root ERROR Timeout for packet_11
+00:51:53,319 root ERROR Retransmitting packet_11
+00:51:53,319 root ERROR Timeout for packet_12
+00:51:53,319 root ERROR Retransmitting packet_12
+00:51:53,319 root ERROR Timeout for packet_13
+00:51:53,319 root ERROR Retransmitting packet_13
+00:51:53,331 root ERROR Timeout for packet_14
+00:51:53,331 root ERROR Retransmitting packet_14
+00:51:53,453 root ERROR Timeout for packet_5
+00:51:53,453 root ERROR Retransmitting packet_5
+00:51:53,454 root ERROR Timeout for packet_11
+00:51:53,454 root ERROR Retransmitting packet_11
+00:51:53,454 root ERROR Timeout for packet_13
+00:51:53,454 root ERROR Retransmitting packet_13
+00:51:53,466 root ERROR Timeout for packet_14
+00:51:53,467 root ERROR Retransmitting packet_14
+00:51:53,589 root ERROR Timeout for packet_11
+00:51:53,589 root ERROR Retransmitting packet_11
+00:51:53,601 root ERROR Timeout for packet_14
+00:51:53,601 root ERROR Retransmitting packet_14
+00:51:53,724 root ERROR Timeout for packet_11
+00:51:53,724 root ERROR Retransmitting packet_11
+00:51:53,736 root ERROR Timeout for packet_14
+00:51:53,737 root ERROR Retransmitting packet_14
+00:51:53,871 root ERROR Timeout for packet_14
+00:51:53,872 root ERROR Retransmitting packet_14
+00:51:54,13 root ERROR Timeout for packet_16
+00:51:54,13 root ERROR Retransmitting packet_16
+00:51:54,148 root ERROR Timeout for packet_16
+00:51:54,148 root ERROR Retransmitting packet_16
+00:51:54,283 root ERROR Timeout for packet_16
+00:51:54,283 root ERROR Retransmitting packet_16

@@ -1,5 +1,21 @@
 import socket, sys, os
 import struct
+import ipaddress
+import logging
+
+def is_ip(ip):
+    try:
+        ipaddress.ip_address(ip)
+        return True
+    except ValueError:
+        print('Invalid IP address')
+        return False
+
+def is_port(port):
+    if port < 1024  or port > 65535:
+        print('Invalid port number')
+        return False
+    return True
 
 class Reciever(object):
     def __init__(self, file_name, udp_port, ack_addr, ack_port):
@@ -52,6 +68,7 @@ class Reciever(object):
             msg, addr = self.udp_sock.recvfrom(self.BUF_SIZ)
             if not self.check_checksum(msg):
                 print('Recieved packet has invalid checksum')
+                logging.error('Recieved packet has invalid checksum')
                 continue
             header = msg[:20]
             data = msg[20:].decode()
@@ -98,10 +115,23 @@ def main():
         print('Usage: python reciever.py <file_name> <udp_port> <ack_addr> <ack_port>')
         sys.exit()
     file_name = sys.argv[1]
-    udp_port = int(sys.argv[2])
+    logging.basicConfig(filename='log2.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
+    try:
+        udp_port = int(sys.argv[2])
+    except ValueError:
+        print('Invalid <udp_port>')
+        sys.exit()
     ack_addr = sys.argv[3]
-    ack_port = int(sys.argv[4])
-    r = Reciever(file_name, udp_port, ack_addr, ack_port)
+    try:
+        ack_port = int(sys.argv[4])
+    except ValueError:
+        print('Invalid <ack_port>')
+    if is_port(udp_port) and is_ip(ack_addr) and is_port(ack_port):
+        r = Reciever(file_name, udp_port, ack_addr, ack_port)
 
 
 if __name__ == "__main__":

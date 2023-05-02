@@ -1,0 +1,8 @@
+23:44:58,927 root ERROR Recieved packet has invalid checksum
+23:45:00,439 root ERROR Recieved packet has invalid checksum
+23:45:01,439 root ERROR Recieved packet has invalid checksum
+23:45:01,943 root ERROR Recieved packet has invalid checksum
+23:45:02,443 root ERROR Recieved packet has invalid checksum
+23:45:03,961 root ERROR Recieved packet has invalid checksum
+23:45:05,962 root ERROR Recieved packet has invalid checksum
+23:45:06,966 root ERROR Recieved packet has invalid checksum

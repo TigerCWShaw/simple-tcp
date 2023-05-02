@@ -2,7 +2,22 @@ import socket, sys, os
 import struct
 import time
 import threading
-import math
+import ipaddress
+import logging
+
+def is_ip(ip):
+    try:
+        ipaddress.ip_address(ip)
+        return True
+    except ValueError:
+        print('Invalid IP address')
+        return False
+
+def is_port(port):
+    if port < 1024  or port > 65535:
+        print('Invalid port number')
+        return False
+    return True
 
 class Sender(object):
     def __init__(self, file_name, dest_addr, dest_port, win_size, ack_port):
@@ -19,6 +34,7 @@ class Sender(object):
         self.ack_port = ack_port
         self.estimated_rtt = 0.1
         self.sample_rtt = 0.1
+        # self.timeout = 0
         self.timeout = 0.5
 
         self.resend_dict = {}
@@ -40,7 +56,6 @@ class Sender(object):
         self.total_pack = self.file_size // self.MAX_SEG_SIZ + 2
         if self.file_size % self.MAX_SEG_SIZ > 0:
             self.total_pack += 1
-        print(self.total_pack)
         for i in range(self.total_pack + 1):
             self.recieve_map[i] = False
 
@@ -57,7 +72,7 @@ class Sender(object):
         self.estimated_rtt = self.estimated_rtt * 0.875 + self.sample_rtt * 0.125
         dev_rtt = 0.75 * self.sample_rtt + 0.25 * abs(self.sample_rtt - self.estimated_rtt)
         self.timeout = self.estimated_rtt + 4 * dev_rtt
-        print('timeout:', self.timeout)
+        # print('timeout:', self.timeout)
 
     def get_checksum(self, header, data):
         checksum = 0
@@ -76,8 +91,8 @@ class Sender(object):
         '!HHIIBBHHH',
         self.ack_port,      # source port
         self.dest_port,     # destination port
-        self.seq_num,       # Sequence Number
-        self.ack_num,       # ack number
+        self.seq_num,       # sequence Number
+        self.ack_num,       # acknowledgement number
         0,                  # reserved data
         int(flags, 2),      # control flags
         self.win_size,      # window size
@@ -91,6 +106,8 @@ class Sender(object):
         header = self.get_header(ack, syn, fin, 0)
         checksum = self.get_checksum(header, data)
         header = self.get_header(ack, syn, fin, checksum)
+        # header = self.get_header(ack, syn, fin, 0)
+
         msg = header + data
         # print(msg)
         return msg
@@ -101,7 +118,6 @@ class Sender(object):
         # seq_num: (timeout_time, msg, have_resend)
         # have_resend is to make sure sampleRTT calculated correctly
         self.add_list.append((self.seq_num, (time.perf_counter(), msg, False)))
-        # self.resend_dict[self.seq_num] = (time.perf_counter() + self.timeout, msg, False)
         self.seq_num += 1
 
     def send(self):
@@ -131,7 +147,6 @@ class Sender(object):
         while True:
             msg, addr = self.ack_sock.recvfrom(self.BUF_SIZ)
             header = msg[:20]
-            # data = msg[20:].decode()
             header_val = struct.unpack('!HHIIBBHHH', header)
             flags = header_val[5]
             flags = "{0:b}".format(flags)
@@ -142,8 +157,9 @@ class Sender(object):
             ack = flags[1]
             syn = flags[4]
             fin = flags[5]
-            # print('test1')
+
             if self.recieve_map[seq]:
+                logging.error('Recieved duplicated ack for packet_%d'%(seq))
                 continue
             print('Recieved ACK_%d: ack: %c syn: %c fin: %c'%(seq, ack, syn, fin))
 
@@ -195,7 +211,10 @@ class Sender(object):
                 # timeout -> retransmission
                 curr = time.perf_counter()
                 if curr >= value[0] + self.timeout:
-                    print('Resending packet_%d...'%(seq_num))
+                    # print('Resending packet_%d...'%(seq_num))
+                    logging.error('Timeout for packet_%d'%(seq_num))
+                    logging.error('Retransmitting packet_%d'%(seq_num))
+
                     self.udp_sock.sendto(value[1], (self.dest_addr, self.dest_port))
                     k = list(value)
                     k[0] = curr
@@ -207,14 +226,38 @@ class Sender(object):
 
 def main():
     if len(sys.argv) != 6:
-        print('Usage: python sender.py <file_name> <udp_addr> <udp_port> <windowsize> <ack_port>')
+        print('Usage: python sender.py <file_name> <udp_addr> <udp_port> <window_size> <ack_port>')
         sys.exit()
+
     file_name = sys.argv[1]
     dest_addr = sys.argv[2]
-    dest_port = int(sys.argv[3])
-    win_size = int(sys.argv[4])
-    ack_port = int(sys.argv[5])
-    s = Sender(file_name, dest_addr, dest_port, win_size, ack_port)
+
+    logging.basicConfig(filename='log1.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
+
+    try:
+        dest_port = int(sys.argv[3])
+    except ValueError:
+        print('Invalid <udp_port>')
+        sys.exit()
+    try:
+        win_size = int(sys.argv[4])
+    except ValueError:
+        print('Invalid <window_size>')
+        sys.exit()
+    try:
+        ack_port = int(sys.argv[5])
+    except ValueError:
+        print('Invalid <ack_port>')
+        sys.exit()
+    if is_ip(dest_addr) and is_port(dest_port) and is_port(ack_port):
+        s = Sender(file_name, dest_addr, dest_port, win_size, ack_port)
+    else:
+        print('Invalid parameters')
+        sys.exit()
 
 if __name__ == "__main__":
     main()
